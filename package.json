@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17"
+  },
+  "scripts": {
+    "build-css": "npx tailwindcss -i ./static/css/src/input.css -o ./static/css/output.css --watch"
+  },
+  "name": "tashrifat-saadat",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "daisyui": "^5.0.27",
+    "flowbite": "^3.1.2"
+  }
+}
