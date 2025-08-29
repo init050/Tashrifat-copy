@@ -1,0 +1,188 @@
+openapi: 3.0.0
+info:
+  title: Music Streaming API
+  version: 1.0.0
+  description: |-
+    This is the initial OpenAPI specification for a music streaming service.
+    It includes endpoints for authentication, user management, tracks, playlists, and streaming metadata.
+servers:
+  - url: http://localhost:8000/api
+    description: Development server
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register a new user
+      responses:
+        '201':
+          description: User created successfully
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Log in a user
+      responses:
+        '200':
+          description: User logged in successfully
+  /auth/logout:
+    post:
+      tags:
+        - Auth
+      summary: Log out a user
+      responses:
+        '200':
+          description: User logged out successfully
+  /users:
+    get:
+      tags:
+        - Users
+      summary: Get a list of users
+      responses:
+        '200':
+          description: A list of users
+    post:
+      tags:
+        - Users
+      summary: Create a new user
+      responses:
+        '201':
+          description: User created
+  /users/{userId}:
+    get:
+      tags:
+        - Users
+      summary: Get user by ID
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User details
+    put:
+      tags:
+        - Users
+      summary: Update a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User updated
+    delete:
+      tags:
+        - Users
+      summary: Delete a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: User deleted
+  /tracks:
+    get:
+      tags:
+        - Tracks
+      summary: Get a list of tracks
+      responses:
+        '200':
+          description: A list of tracks
+    post:
+      tags:
+        - Tracks
+      summary: Upload a new track
+      responses:
+        '201':
+          description: Track uploaded
+  /tracks/{trackId}:
+    get:
+      tags:
+        - Tracks
+      summary: Get track by ID
+      parameters:
+        - name: trackId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Track details
+  /playlists:
+    get:
+      tags:
+        - Playlists
+      summary: Get a list of playlists
+      responses:
+        '200':
+          description: A list of playlists
+    post:
+      tags:
+        - Playlists
+      summary: Create a new playlist
+      responses:
+        '201':
+          description: Playlist created
+  /playlists/{playlistId}:
+    get:
+      tags:
+        - Playlists
+      summary: Get playlist by ID
+      parameters:
+        - name: playlistId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Playlist details
+    put:
+      tags:
+        - Playlists
+      summary: Update a playlist
+      parameters:
+        - name: playlistId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Playlist updated
+    delete:
+      tags:
+        - Playlists
+      summary: Delete a playlist
+      parameters:
+        - name: playlistId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Playlist deleted
+  /streaming-metadata/{trackId}:
+    get:
+      tags:
+        - Streaming
+      summary: Get streaming metadata for a track
+      parameters:
+        - name: trackId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Streaming metadata
